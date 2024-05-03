@@ -1,0 +1,49 @@
+*{
+  margin:0;
+  padding:0;
+  box-sizing: border-box;
+}
+
+
+#select_tag{
+  border-radius: 30px !important;
+  width:70%;
+}
+#select_tag select{
+  border-top-left-radius: 30px !important;
+  border-bottom-left-radius: 30px !important;
+}
+
+.btn_1{
+  border:transparent;
+  background-color: #00A2C2 !important;
+  color:white;
+  border-top-right-radius: 30px !important;
+  border-bottom-right-radius: 30px !important;
+  width:20% !important;
+}
+
+.sign i{
+  font-size: 25px;
+}
+.sign div{
+  font-size:12px;
+}
+.sign div b{
+  font-size:14px;
+  line-height: 0%;
+}
+.bi-suit-heart{
+  font-size:25px;
+}
+
+.dropdown-toggle{
+  font-weight:bold !important;
+}
+.icon{
+ margin-left:12%;
+}
+
+nav{
+  font-size:15px;
+}

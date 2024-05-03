@@ -1,0 +1,256 @@
+{
+  "offers": [
+    {
+      "id": "1",
+      "img": "Media/img1.png",
+      "des": "Gamepad Save Up To $69 ",
+      "msg": "Shop Gamepad",
+      "bg": "#332A3B",
+      "width": "50%",
+      "height": "100%"
+    },
+    {
+      "id": "2",
+      "img": "Media/img2.png",
+      "des": "Buy 1 Get 1 Save Up To $559",
+      "msg": "Shop Deals",
+      "bg": "#DD3B62",
+      "width": "50%",
+      "height": "100%"
+    },
+    {
+      "id": "3",
+      "img": "Media/img3.png",
+      "des": "Cameras Save Up To $159",
+      "msg": "Shop Camera",
+      "bg": "#6945E7",
+      "width": "50%",
+      "height": "100%"
+    }
+  ],
+  "item": [
+    {
+      "id": 1,
+      "img": "Media/img_2.png",
+      "mtit": "Macbooks & PCs",
+      "no": 23
+    },
+    {
+      "id": 2,
+      "img": "Media/img_1.png",
+      "mtit": "OLEDs & Smart TVs",
+      "no": 21
+    },
+    {
+      "id": 3,
+      "img": "Media/img23.png",
+      "mtit": "Phone & Mobile",
+      "no": 28
+    },
+    {
+      "id": 4,
+      "img": "Media/img_8.png",
+      "mtit": "Electronics",
+      "no": 31
+    },
+    {
+      "id": 5,
+      "img": "Media/img21.png",
+      "mtit": "Tablets & IPad Pro",
+      "no": 6
+    },
+    {
+      "id": 6,
+      "img": "Media/img_6.png",
+      "mtit": "Camera & Photo",
+      "no": 6
+    }
+  ],
+  "deals": [
+    {
+      "id": 1,
+      "img": "Media/i1.png",
+      "nm": "Samsung",
+      "des": "Smartphone S21 Ultra 5G 128GB - Unlocked International",
+      "price": 500
+    },
+    {
+      "id": 2,
+      "img": "Media/i2.png",
+      "nm": "Apple",
+      "des": "Smart Watch Aluminium Case - Pride Edition",
+      "price": 300
+    },
+    {
+      "id": 3,
+      "img": "Media/i3.png",
+      "nm": "Samsung",
+      "des": "OnePlus S22 5GB 8GB/128GB - SmartPhone U.S. Version",
+      "price": 350
+    },
+    {
+      "id": 4,
+      "img": "Media/i4.png",
+      "nm": "Samsung",
+      "des": "Smartphone Galaxy S21 FE 8GB/128GB - White/Black",
+      "price": 250
+    }
+  ],
+  "seals": [
+    {
+      "id": 1,
+      "img": "Media/i3.png",
+      "nm": "Samsung",
+      "des": "OnePlus S22 5GB 8GB/128GB ",
+      "price": 350
+    },
+    {
+      "id": 2,
+      "img": "Media/i11.png",
+      "nm": "Apple",
+      "des": "Smart Watch Aluminium Case - Pride Edition",
+      "price": 350
+    },
+    {
+      "id": 3,
+      "img": "Media/img21.png",
+      "nm": "Apple",
+      "des": "Ipad Air 10.9 inch Wi-Fi 256GB Touch ID Retina",
+      "price": 500
+    },
+    {
+      "id": 4,
+      "img": "Media/img12.png",
+      "nm": "Apple",
+      "des": "Smartphone S21 Ultra 5G 128GB",
+      "price": 200
+    },
+    {
+      "id": 5,
+      "img": "Media/img11.jpg",
+      "nm": "Apple",
+      "des": "Smart 12 ProMax 128GB/13MP",
+      "price": 350
+    },
+    {
+      "id": 6,
+      "img": "Media/img13.png",
+      "nm": "Samsung",
+      "des": "Smartphone Galaxy S21 FE 8GB/128GB",
+      "price": 500
+    }
+  ],
+  "Recommended": [
+    {
+      "id": 7,
+      "img": "Media/i4.png",
+      "nm": "Samsung",
+      "des": "Smartphone Galaxy S21 FE 8GB/128GB - White/Black",
+      "price": 250
+    },
+    {
+      "id": 8,
+      "img": "Media/i3.png",
+      "nm": "Samsung",
+      "des": "OnePlus S22 5GB 8GB/128GB - SmartPhone U.S. Version",
+      "price": 350
+    },
+    {
+      "id": 9,
+      "img": "Media/i2.png",
+      "nm": "Apple",
+      "des": "Smart Watch Aluminium Case - Pride Edition",
+      "price": 300
+    },
+    {
+      "id": 10,
+      "img": "Media/i1.png",
+      "nm": "Samsung",
+      "des": "Smartphone S21 Ultra 5G 128GB - Unlocked International",
+      "price": 500
+    }
+  ],
+  "account": [
+    {
+      "mail": "abc@gmail.com",
+      "pass": "Abc@2345",
+      "name": "Prachi",
+      "id": 2,
+      "Login": false,
+      "AddtoCart": [],
+      "total": 0,
+      "BuyDetail": [],
+      "buyCost": 300
+    }
+  ],
+  "shop": [
+    {
+      "id": 11,
+      "img": "Media/shop2 (1).jpg",
+      "nm": "Apple",
+      "des": "IPad Pro M1 11-inch 12MP Back Camera Wi-Fi 128GB",
+      "price": 150
+    },
+    {
+      "id": 12,
+      "img": "Media/shop2 (2).jpg",
+      "nm": "Samsung",
+      "des": "IPad Pro M1 11-inch 12MP Back Camera Wi-Fi 128GB",
+      "price": 250
+    },
+    {
+      "id": 13,
+      "img": "Media/shop2 (3).jpg",
+      "nm": "Smart Watch",
+      "des": "IPad Pro M1 11-inch 12MP Back Camera Wi-Fi 128GB",
+      "price": 300
+    },
+    {
+      "id": 14,
+      "img": "Media/shop2 (4).jpg",
+      "nm": "Apple",
+      "des": "IPad Pro M1 11-inch 12MP Back Camera Wi-Fi 128GB",
+      "price": 200
+    },
+    {
+      "id": 15,
+      "img": "Media/shop2 (5).jpg",
+      "nm": "Apple",
+      "des": "IPad Pro M1 11-inch 12MP Back Camera Wi-Fi 128GB",
+      "price": 200
+    },
+    {
+      "id": 16,
+      "img": "Media/shop2 (6).jpg",
+      "nm": "Apple",
+      "des": "IPad Pro M1 11-inch 12MP Back Camera Wi-Fi 128GB",
+      "price": 150
+    },
+    {
+      "id": 17,
+      "img": "Media/shop2 (7).jpg",
+      "nm": "Apple",
+      "des": "IPad Pro M1 11-inch 12MP Back Camera Wi-Fi 128GB",
+      "price": 250
+    },
+    {
+      "id": 18,
+      "img": "Media/shop2 (8).jpg",
+      "nm": "Apple",
+      "des": "IPad Pro M1 11-inch 12MP Back Camera Wi-Fi 128GB",
+      "price": 350
+    }
+  ],
+  "Contact": [
+    {
+      "id": 1
+    },
+    {
+      "name": "Prachi",
+      "email": "prachi@gmail.com",
+      "number": "9876543210",
+      "msg": "sdgsg",
+      "id": 2
+    }
+  ]
+}
