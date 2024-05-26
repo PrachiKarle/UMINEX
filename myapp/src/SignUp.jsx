@@ -30,7 +30,7 @@ const SignUp = () => {
   const saveForm = async (e) => {
     e.preventDefault();
     var reg =
-      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@.#$!%*?&])[A-Za-z\d@.#$!%*?&]{8,15}$/;
+    /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@.#$!%*?&])[A-Za-z\d@.#$!%*?&]{8,15}$/;
     check1().then((res)=>setR(res))
     if (r) {
       if (cpass == pass) {
@@ -41,6 +41,10 @@ const SignUp = () => {
             mail: mail,
             pass: pass,
             name: nm,
+            Login:false,
+            AddtoCart:[],
+            total:0,
+            BuyDetail:[],
           });
           setMail("");
           setPass("");

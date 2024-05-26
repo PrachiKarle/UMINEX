@@ -58,11 +58,11 @@ const Cart = () => {
         return val.id != id;
       });
       console.log(filterData);
+      var x=await axios.get(`http://localhost:3000/account/${ID}`);
       await axios.patch(`http://localhost:3000/account/${ID}`, {
-        BuyDetail: [...acc.BuyDetail, res],
-        buyCost: acc.buyCost + data.price,
+        BuyDetail: [...x.data.BuyDetail, res],
         AddtoCart: filterData,
-        total: acc.total - res.price,
+        total: acc.total - res[0].price,
       });
     }
   };

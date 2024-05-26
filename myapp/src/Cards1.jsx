@@ -7,12 +7,11 @@ const Cards1 = (props) => {
 
   //Add to cart
   const add = async (id) => {
-    var flag = false;
-
-    var acc = await axios.get("http://localhost:3000/account");
-    for (let x of acc.data) {
-      if (x.Login) {
-        if (window.confirm("Are you sure?")) {
+    if (window.confirm("Are you sure?")) {
+      var flag = false;
+      var acc = await axios.get(`http://localhost:3000/account`);
+      for (let x of acc.data) {
+        if (x.Login) {
           flag = true;
           var deals = await axios.get(`http://localhost:3000/deals/${id}`);
           await axios.patch(`http://localhost:3000/account/${x.id}`, {
@@ -21,38 +20,36 @@ const Cards1 = (props) => {
           });
         }
       }
-    }
-    if (!flag) {
-      nav("/signin");
+      if (!flag) {
+        nav("/signin");
+      }
     }
   };
 
   //buy
   const Buy = async (id) => {
-    var flag = false;
-
-    var acc = await axios.get("http://localhost:3000/account");
-    for (let x of acc.data) {
-      if (x.Login) {
-        if (window.confirm("Are you sure?")) {
+    if (window.confirm("Are you sure?")) {
+      var flag = false;
+      var acc = await axios.get("http://localhost:3000/account");
+      for (let x of acc.data) {
+        if (x.Login) {
           flag = true;
           var deals = await axios.get(`http://localhost:3000/deals/${id}`);
           await axios.patch(`http://localhost:3000/account/${x.id}`, {
-            buyCost: deals.data.price + x.buyCost,
             BuyDetail: [...x.BuyDetail, deals.data],
           });
         }
       }
-    }
-    if (!flag) {
-      nav("/signin");
+      if (!flag) {
+        nav("/signin");
+      }
     }
   };
 
   return (
     <>
       <div
-        className="h-100 w-100 pt-3 px-2 d-flex"
+        className="h-100 w-100 pt-3 px-2"
         style={{ backgroundColor: "white" }}
       >
         <div className="h-100 w-50">

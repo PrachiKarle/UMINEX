@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Header from "./Header";
 import Home from "./Home";
@@ -12,19 +12,34 @@ import Blog from "./Blog";
 import Account from "./Account";
 import About from "./About";
 import Contact from "./Contact";
+import axios from "axios";
 
 const App = () => {
+  const [account,setAccount]=useState([]);
+  useEffect(()=>{
+    loadAccount();
+  },[]);
+
+  const loadAccount=async()=>{
+     var acc=await axios.get("http://localhost:3000/account");
+     for(let x of acc.data){
+        if(x.Login){
+          setAccount(x);
+        }
+     }
+  }
+  console.log(account);
   return (
     <>
       <Router>
         <Routes>
           <Route path="/" element={<Header />}>
-            <Route index element={<Home />} />
+            <Route index element={<Home/>} />
             <Route path="/cart" element={<Cart />} />
             <Route path="/shop" element={<Shop />} />
             <Route path="/product" element={<Product />} />
             <Route path="/blog" element={<Blog />} />
-            <Route path="/account" element={<Account/>}/>
+            <Route path="/account" element={<Account account={account}/>}/>
             <Route path='/about' element={<About/>}/>
             <Route path='/contact' element={<Contact/>}/>
           </Route>

@@ -5,10 +5,9 @@ import Offer from "./Offer";
 import Items from "./Items";
 import TopDeals from "./TopDeals";
 import TopSeals from "./TopSeals";
-import Recommended from "./Recommended";
 import Deals from "./Deals";
 
-const Home = () => {
+const Home = (props) => {
   return (
     <>
       {/* carousel */}
@@ -20,9 +19,7 @@ const Home = () => {
       {/* Top deals */}
       <TopDeals />
       {/* Top selling */}
-      <TopSeals />
-      {/* Recommended */}
-      <Recommended />
+      <TopSeals/>
       {/* deals & promotion */}
       <Deals />
     </>

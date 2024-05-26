@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Head from "./Head";
-import Cards from "./Cards";
 import axios from "axios"
+import Card from "./Card";
 
 const TopDeals = () => {
   const [deals,setDeals]=useState([]);
@@ -25,7 +25,7 @@ const TopDeals = () => {
                 <>
                   <div className="col-lg-3 col-sm-6 col-12 m-0 p-2" >
                     <div className="" key={val.id}>
-                      <Cards
+                      <Card
                         id={val.id}
                         img={val.img}
                         nm={val.nm}

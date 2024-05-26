@@ -1,87 +1,90 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import EmptyCart from "./EmptyCart";
+import { useNavigate } from "react-router-dom";
 
 const Account1 = (props) => {
-  
-  const cancelOrder = async (id) => {
-    var res = data.filter((val) => {
-      return val.id != id;
-    });
-    setData(res);
-    var res1 = data.filter((val) => {
-      return val.id == id;
-    });
-    await axios.patch(`http://localhost:3000/account/${props.Dt.id}`, {
-      BuyDetail: res,
-      buyCost: props.Dt.buyCost - res1[0].price,
-    });
-  };
-
-  
-  //Buy product details
-  useEffect(() => {
-    loadData1();
-  }, []);
-  const [data, setData] = useState([]);
-  const loadData1 = async () => {
-    var res = await axios.get(`http://localhost:3000/account/${props.Dt.id}`);
-    setData(res.data.BuyDetail);
-  };
-
   const nav = useNavigate();
-  //Edit account information
-  const [name, setName] = useState("");
-  const [mail, setMail] = useState("");
-  const [pass, setPass] = useState("");
+
+  const [setting, setSetting] = useState(false);
+  const [order, setOrder] = useState(true);
+
+  //buydetail
+  const [data, setData] = useState([]);
+  const [acc, setAcc] = useState([]);
   useEffect(() => {
     loadData();
-  }, []);
-  const loadData = () => {
-    setName(props.Dt.name);
-    setMail(props.Dt.mail);
-    setPass(props.Dt.pass);
+  });
+
+  const loadData = async () => {
+    var account = await axios.get(
+      `http://localhost:3000/account/${props.account.id}`
+    );
+    setData(account.data.BuyDetail);
+    setAcc(account.data);
   };
 
-  const Edit = async (e) => {
-    e.preventDefault();
-    await axios.patch(`http://localhost:3000/account/${props.Dt.id}`, {
-      name: name,
-      mail: mail,
-      pass: pass,
-    });
-    alert("Updated successfully");
-    nav("/");
-  };
-
-  //orders
-  const [order, setOrder] = useState(false);
-  const [setting, setSetting] = useState(true);
   const change1 = () => {
-    setOrder(true);
-    setSetting(false);
-  };
-  const change2 = () => {
-    setOrder(false);
     setSetting(true);
+    setOrder(false);
+  };
+
+  const change2 = () => {
+    setSetting(false);
+    setOrder(true);
   };
 
   //logout
   const logout = async () => {
-    await axios.patch(`http://localhost:3000/account/${props.Dt.id}`, {
+    await axios.patch(`http://localhost:3000/account/${props.account.id}`, {
       Login: false,
     });
-    alert("Logout successfully!!!");
-    nav("/");
   };
-  //delete Account
+
+  //delete account
   const deleteAcc = async () => {
-    if (window.confirm("Are you sure?")) {
-      await axios.delete(`http://localhost:3000/account/${props.Dt.id}`);
-      alert("Account Deleted!!!");
-      nav("/");
+    await axios.delete(`http://localhost:3000/account/${props.account.id}`);
+  };
+  //account details edit
+  const [name1, setName] = useState("");
+  const [mail1, setMail] = useState("");
+  const [pass1, setPass] = useState("");
+
+  //submit edit form
+  const Edit = async (e) => {
+    e.preventDefault();
+    var flag = true;
+    if (name1 != "" || mail1 !="") {
+      if (pass1 != "") {
+        var regex =
+          /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@.#$!%*?&])[A-Za-z\d@.#$!%*?&]{8,15}$/;
+        if (!regex.test(pass1)) {
+          alert("Weak Password");
+          flag = false;
+        }
+      }
+      if (flag) {
+        await axios.patch(`http://localhost:3000/account/${props.account.id}`, {
+          name: name1,
+          mail: mail1,
+          pass: pass1,
+        });
+        alert("Successfully Editted");
+        nav("/");
+      }
+    } else {
+      alert("Please Enter  details");
     }
+  };
+
+  //cancel Order
+  const cancelOrder = async (id) => {
+    var BuyDetails = data.filter((val) => {
+      return val.id != id;
+    });
+    await axios.patch(`http://localhost:3000/account/${props.account.id}`, {
+      BuyDetail: BuyDetails,
+    });
   };
 
   return (
@@ -93,51 +96,49 @@ const Account1 = (props) => {
             style={{ backgroundColor: "white" }}
           >
             <img src="Media/profile.svg" className="img-fluid" alt="" />
-            <h5 className="mx-4">Hello, {props.Dt.name}</h5>
+            <h5 className="mx-4">Hello, {props.account.name}</h5>
           </div>
 
           <div
-            onClick={() => change1()}
             className="mt-2 p-3 d-flex justify-content-between"
             style={{
               borderBottom: "1px solid #F0F0F0",
               backgroundColor: "white",
             }}
           >
-            <h5 className="text-secondary">My Orders </h5>{" "}
+            <h5
+              className="text-secondary"
+              style={{ cursor: "pointer" }}
+              onClick={() => change2()}
+            >
+              My Orders{" "}
+            </h5>{" "}
             <h5>
               <i className="bi bi-chevron-right text-secondary"></i>{" "}
             </h5>
           </div>
 
           <div
-            onClick={() => change2()}
             className="p-3 text-secondary"
-            style={{ backgroundColor: "white" }}
+            style={{ backgroundColor: "white", cursor: "pointer" }}
           >
-            <h5>
+            <h5 onClick={() => change1()}>
               <i className="bi bi-person-fill"></i> Account Settings
             </h5>
-            <h6 className="fw-normal text-primary my-3">Profile Information</h6>
-            <h6 className="fw-normal my-3">Manage Addreses</h6>
-            <h6 className="fw-normal my-3">Pan card Information</h6>
+           
           </div>
 
           <div
             className="p-3 my-2"
-            style={{ backgroundColor: "white" }}
             onClick={() => logout()}
+            style={{ backgroundColor: "white" }}
           >
             <h5 className="text-secondary">
               <i className="bi bi-box-arrow-left"></i> Logout
             </h5>
           </div>
-          <div
-            className="p-3 my-2"
-            style={{ backgroundColor: "white" }}
-            onClick={() => deleteAcc()}
-          >
-            <h5 className="text-secondary">
+          <div className="p-3 my-2" style={{ backgroundColor: "white" }}>
+            <h5 className="text-secondary" onClick={() => deleteAcc()}>
               <i className="bi bi-archive"></i> Delete Account
             </h5>
           </div>
@@ -158,7 +159,7 @@ const Account1 = (props) => {
                       type="text"
                       className="form-control"
                       placeholder="Enter new Username"
-                      value={name}
+                      value={name1}
                       onChange={(e) => setName(e.target.value)}
                     />
                   </div>
@@ -167,7 +168,7 @@ const Account1 = (props) => {
                     <input
                       type="email"
                       className="form-control"
-                      value={mail}
+                      value={mail1}
                       onChange={(e) => setMail(e.target.value)}
                       placeholder="Enter new Email"
                     />
@@ -177,7 +178,7 @@ const Account1 = (props) => {
                     <input
                       type="password"
                       className="form-control"
-                      value={pass}
+                      value={pass1}
                       onChange={(e) => setPass(e.target.value)}
                       placeholder="Enter new Password"
                     ></input>
@@ -190,37 +191,38 @@ const Account1 = (props) => {
                 </form>
               </>
             ) : null}
+
             {order ? (
               <>
                 {data.length == 0 ? (
                   <>
-                    <EmptyCart/>
+                    <EmptyCart />
                   </>
                 ) : (
                   <>
-                <h5>My Orders</h5>
-                <div className="row m-0 p-4">
-                  {data.map((val) => {
-                    return (
-                      <>
-                        <div className="col-md-6 p-3">
-                          <img src={val.img} className="img-fluid" alt="" />
-                          <h5>{val.nm}</h5>
-                          <h6>{val.des}</h6>
-                          <h5>${val.price}</h5>
+                    <h5>My Orders</h5>
+                    <div className="row m-0 p-4">
+                      {data.map((val) => {
+                        return (
+                          <>
+                            <div className="col-md-6 p-3">
+                              <img src={val.img} className="img-fluid" alt="" />
+                              <h5>{val.nm}</h5>
+                              <h6>{val.des}</h6>
+                              <h5>${val.price}</h5>
 
-                          <button
-                            className="btn btn-danger"
-                            onClick={() => cancelOrder(val.id)}
-                          >
-                            Cancel order
-                          </button>
-                        </div>
-                      </>
-                    );
-                  })}
-                </div>
-                </>
+                              <button
+                                className="btn btn-danger"
+                                onClick={() => cancelOrder(val.id)}
+                              >
+                                Cancel order
+                              </button>
+                            </div>
+                          </>
+                        );
+                      })}
+                    </div>
+                  </>
                 )}
               </>
             ) : null}

@@ -7,43 +7,42 @@ const Card = (props) => {
 
   //add to cart
   const add = async (id) => {
-    var flag = false;
-    var acc = await axios.get(`http://localhost:3000/account`);
-    for (let x of acc.data) {
-      if (x.Login) {
-        if (window.confirm("Are you Sure?")) {
+    if (window.confirm("Are you sure?")) {
+      var flag = false;
+      var acc = await axios.get(`http://localhost:3000/account`);
+      for (let x of acc.data) {
+        if (x.Login) {
           flag = true;
           var deals = await axios.get(`http://localhost:3000/deals/${id}`);
           await axios.patch(`http://localhost:3000/account/${x.id}`, {
+            total: deals.data.price + x.total,
             AddtoCart: [...x.AddtoCart, deals.data],
-            total: x.total + deals.data.price,
           });
         }
       }
-    }
-    if (!flag) {
-      nav("/signin");
+      if (!flag) {
+        nav("/signin");
+      }
     }
   };
 
   //buy
   const Buy = async (id) => {
-    var flag = false;
-    var acc = await axios.get(`http://localhost:3000/account`);
-    for (let x of acc.data) {
-      if (x.Login) {
-        if (window.confirm("Are you sure?")) {
+    if (window.confirm("Are you sure?")) {
+      var flag = false;
+      var acc = await axios.get("http://localhost:3000/account");
+      for (let x of acc.data) {
+        if (x.Login) {
           flag = true;
           var deals = await axios.get(`http://localhost:3000/deals/${id}`);
           await axios.patch(`http://localhost:3000/account/${x.id}`, {
             BuyDetail: [...x.BuyDetail, deals.data],
-            buyCost: x.total + deals.data.price,
           });
         }
       }
-    }
-    if (!flag) {
-      nav("/signin");
+      if (!flag) {
+        nav("/signin");
+      }
     }
   };
 
