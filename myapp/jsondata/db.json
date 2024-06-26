@@ -155,32 +155,18 @@
       "mail": "prachi@gmail.com",
       "pass": "Pbc@2345",
       "name": "Prachi ",
-      "Login": false,
-      "AddtoCart": [],
-      "total": 0,
-      "BuyDetail": [
+      "Login": true,
+      "AddtoCart": [
         {
-          "id": 1,
-          "img": "Media/i1.png",
-          "nm": "Samsung",
-          "des": "Smartphone S21 Ultra 5G 128GB - Unlocked International",
-          "price": 500
-        },
-        {
-          "id": 3,
-          "img": "Media/i3.png",
-          "nm": "Samsung",
-          "des": "OnePlus S22 5GB 8GB/128GB - SmartPhone U.S. Version",
+          "id": 6,
+          "img": "Media/i11.png",
+          "nm": "Apple",
+          "des": "Smart Watch Aluminium Case - Pride Edition",
           "price": 350
-        },
-        {
-          "id": 12,
-          "img": "Media/shop2 (2).jpg",
-          "nm": "Samsung",
-          "des": "IPad Pro M1 11-inch 12MP Back Camera Wi-Fi 128GB",
-          "price": 250
         }
       ],
+      "total": 350,
+      "BuyDetail": [],
       "id": 3
     }
   ],
