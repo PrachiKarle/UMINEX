@@ -10,8 +10,8 @@ const Offer = () => {
   }, []);
 
   const loadData = async () => {
-    var res = await axios.get("http://localhost:3000/offers");
-    setOffer(res.data);
+    var res = await axios.get("https://prachikarle.github.io/JSON-UMINEX/db.json");
+    setOffer(res.data.offers);
   };
   return (
     <>

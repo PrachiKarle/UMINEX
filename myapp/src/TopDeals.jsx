@@ -10,8 +10,8 @@ const TopDeals = () => {
   },[]);
   
   const loadData=async()=>{
-    var res=await axios.get("http://localhost:3000/deals");
-    setDeals(res.data);
+    var res=await axios.get("https://prachikarle.github.io/JSON-UMINEX/db.json");
+    setDeals(res.data.deals);
   }
   return (
     <>

@@ -9,15 +9,15 @@ const Card = (props) => {
   const add = async (id) => {
     if (window.confirm("Are you sure?")) {
       var flag = false;
-      var acc = await axios.get(`http://localhost:3000/account`);
-      for (let x of acc.data) {
+      var acc = await axios.get(`https://prachikarle.github.io/JSON-UMINEX/db.json`);
+      for (let x of acc.data.account) {
         if (x.Login) {
           flag = true;
-          var deals = await axios.get(`http://localhost:3000/deals/${id}`);
-          await axios.patch(`http://localhost:3000/account/${x.id}`, {
-            total: deals.data.price + x.total,
-            AddtoCart: [...x.AddtoCart, deals.data],
-          });
+          var deals = await axios.get(`https://prachikarle.github.io/JSON-UMINEX/db.json`);
+          deals=deals.data.deals[id];
+          x.AddtoCart=[...x.AddtoCart,deals.data];
+          alert("Successfully added");
+          
         }
       }
       if (!flag) {
@@ -30,14 +30,14 @@ const Card = (props) => {
   const Buy = async (id) => {
     if (window.confirm("Are you sure?")) {
       var flag = false;
-      var acc = await axios.get("http://localhost:3000/account");
-      for (let x of acc.data) {
+      var acc = await axios.get("https://prachikarle.github.io/JSON-UMINEX/db.json");
+      for (let x of acc.data.account) {
         if (x.Login) {
           flag = true;
-          var deals = await axios.get(`http://localhost:3000/deals/${id}`);
-          await axios.patch(`http://localhost:3000/account/${x.id}`, {
-            BuyDetail: [...x.BuyDetail, deals.data],
-          });
+          var deals = await axios.get(`https://prachikarle.github.io/JSON-UMINEX/db.json`);
+          deals=deals.data.deals[id];
+          x.BuyDetails=[...x.BuyDetails,deals.data];
+          alert("Successfully added");
         }
       }
       if (!flag) {

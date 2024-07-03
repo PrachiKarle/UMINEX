@@ -11,8 +11,8 @@ const Navbar = () => {
     checked();
   });
   const checked = async () => {
-    var res = await axios.get("http://localhost:3000/account");
-    for (let x of res.data) {
+    var res = await axios.get("https://prachikarle.github.io/JSON-UMINEX/db.json");
+    for (let x of res.data.account) {
       if (x.Login == true) {
         setName(x.name);
         setCart(x.total);
@@ -67,9 +67,9 @@ const Navbar = () => {
         <div className="d-flex mx-2 sign">
           <i className="bi bi-cart2 text-light"></i>
           <div className="text-light mx-2">
-            <NavLink to="/cart" className="nav-link">
+            
               Cart
-            </NavLink>
+            <br />
             {cart ? <b>${cart}</b> : <b>0.00</b>}
           </div>
         </div>
@@ -127,16 +127,7 @@ const Navbar = () => {
                 Blog
               </NavLink>
             </li>
-            <li className="nav-item">
-              <NavLink to="/product" className="nav-link text-dark fw-bold">
-                Product
-              </NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink to="/account" className="nav-link text-dark fw-bold">
-              Account
-              </NavLink>
-            </li>
+            
             <li className="nav-item">
               <NavLink to="/contact" className="nav-link text-dark fw-bold">
                 Contact 

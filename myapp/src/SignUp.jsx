@@ -16,8 +16,8 @@ const SignUp = () => {
   const [r,setR]=useState(null);
 
   const check1 = async () => {
-    var res = await axios.get("http://localhost:3000/account");
-    for (let x of res.data) {
+    var res = await axios.get("https://prachikarle.github.io/JSON-UMINEX/db.json");
+    for (let x of res.data.account) {
       if (x.mail == mail) {
         setMailerr("Email Already exist,Please sign in");
         return false;
@@ -36,16 +36,16 @@ const SignUp = () => {
       if (cpass == pass) {
         if (reg.test(pass)) {
           alert("Account Created Successfully");
-          var nm = mail[0].toUpperCase() + mail.slice(1, mail.indexOf("@"));
-          await axios.post("http://localhost:3000/account", {
-            mail: mail,
-            pass: pass,
-            name: nm,
-            Login:false,
-            AddtoCart:[],
-            total:0,
-            BuyDetail:[],
-          });
+          // var nm = mail[0].toUpperCase() + mail.slice(1, mail.indexOf("@"));
+          // await axios.post("https://prachikarle.github.io/JSON-UMINEX/db.json", {
+          //   mail: mail,
+          //   pass: pass,
+          //   name: nm,
+          //   Login:false,
+          //   AddtoCart:[],
+          //   total:0,
+          //   BuyDetail:[],
+          // });
           setMail("");
           setPass("");
           nav("/signin");

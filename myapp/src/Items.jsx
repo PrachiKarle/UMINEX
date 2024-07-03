@@ -10,8 +10,8 @@ const Items = () => {
   }, []);
 
   const loadData = async() => {
-    var res=await axios.get("http://localhost:3000/item");
-    setItem(res.data)
+    var res=await axios.get("https://prachikarle.github.io/JSON-UMINEX/db.json");
+    setItem(res.data.item)
   };
 
   return (

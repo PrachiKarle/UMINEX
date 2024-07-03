@@ -24,36 +24,17 @@ const shop = [
 ];
 
 const Shop = () => {
-  const nav = useNavigate();
   const [data, setData] = useState([]);
   useEffect(() => {
     loadData();
   }, []);
 
   const loadData = async () => {
-    var res = await axios.get("http://localhost:3000/shop");
-    setData(res.data);
+    var res = await axios.get("https://prachikarle.github.io/JSON-UMINEX/db.json");
+    setData(res.data.shop);
   };
 
-  const add = async (id) => {
-    var flag = false;
-    var product = await axios.get(`http://localhost:3000/shop/${id}`);
-    var account = await axios.get(`http://localhost:3000/account`);
-    if (window.confirm("Are you sure?")) {
-      for (let x of account.data) {
-        if (x.Login) {
-          flag = true;
-          await axios.patch(`http://localhost:3000/account/${x.id}`, {
-            BuyDetail: [...x.BuyDetail, product.data],
-          });
-        }
-      }
-      if (!flag) {
-        nav("/sign");
-      }
-    }
-  };
-
+  
   return (
     <>
       <Heading val="Shop"></Heading>
@@ -98,13 +79,7 @@ const Shop = () => {
                     <b className="py-3">${val.price}</b>
                   </div>
 
-                  <button
-                    className="btn btn-danger my-2"
-                    style={{ marginLeft: "25%" }}
-                    onClick={() => add(val.id)}
-                  >
-                    Shop Now
-                  </button>
+                 
                 </div>
               </div>
             </>

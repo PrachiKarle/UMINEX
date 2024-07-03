@@ -14,20 +14,12 @@ const Sign = () => {
   const saveForm = async(e) => {
     var flag=false;
     e.preventDefault();
-    var res = await axios.get("http://localhost:3000/account");
-    for (let x of res.data) {
+    var res = await axios.get("https://prachikarle.github.io/JSON-UMINEX/db.json");
+    for (let x of res.data.account) {
       if (x.mail == mail && x.pass == pass) {
         alert("Login Succesfully");
         flag=true;
-       await axios.patch(`http://localhost:3000/account/${x.id}`,{
-        Login:true
-       })
         nav('/');  
-      }
-      else{
-        await axios.patch(`http://localhost:3000/account/${x.id}`,{
-        Login:false
-       })
       }
     }
     if(!flag){

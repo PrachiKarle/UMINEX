@@ -11,54 +11,53 @@ const TopSeals = () => {
   }, []);
 
   const loadData = async () => {
-    var res = await axios.get("http://localhost:3000/seals");
-    setSeal(res.data);
+    var res = await axios.get("https://prachikarle.github.io/JSON-UMINEX/db.json");
+    setSeal(res.data.seals);
   };
 
   const nav = useNavigate();
 
-  //Add to cart
+  //add to cart
   const add = async (id) => {
-    var flag = false;
     if (window.confirm("Are you sure?")) {
-      var account = await axios.get("http://localhost:3000/account");
-      for (let x of account.data) {
+      var flag = false;
+      var acc = await axios.get(`https://prachikarle.github.io/JSON-UMINEX/db.json`);
+      for (let x of acc.data.account) {
         if (x.Login) {
           flag = true;
-          var seals = await axios.get(`http://localhost:3000/seals/${id}`);
-          await axios.patch(`http://localhost:3000/account/${x.id}`, {
-            AddtoCart: [...x.AddtoCart, seals.data],
-            total: x.total + seals.data.price,
-          });
+          var deals = await axios.get(`https://prachikarle.github.io/JSON-UMINEX/db.json`);
+          deals=deals.data.seals[id];
+          x.AddtoCart=[...x.AddtoCart,deals.data];
+          alert("Successfully added");
+          
         }
       }
       if (!flag) {
-        alert("Please Login First!!!");
-        nav("/sign");
+        nav("/signin");
       }
     }
   };
 
   //buy
   const Buy = async (id) => {
-    var flag = false;
     if (window.confirm("Are you sure?")) {
-      var account = await axios.get("http://localhost:3000/account");
-      for (let x of account.data) {
+      var flag = false;
+      var acc = await axios.get("https://prachikarle.github.io/JSON-UMINEX/db.json");
+      for (let x of acc.data.account) {
         if (x.Login) {
           flag = true;
-          var seals = await axios.get(`http://localhost:3000/seals/${id}`);
-          await axios.patch(`http://localhost:3000/account/${x.id}`, {
-            BuyDetail: [...x.BuyDetail, seals.data],
-          });
+          var deals = await axios.get(`https://prachikarle.github.io/JSON-UMINEX/db.json`);
+          deals=deals.data.seals[id];
+          x.BuyDetails=[...x.BuyDetails,deals.data];
+          alert("Successfully added");
         }
       }
       if (!flag) {
-        alert("Please Login First!!!");
-        nav("/sign");
+        nav("/signin");
       }
     }
   };
+
   return (
     <>
       <div className="row m-0 p-5" style={{ backgroundColor: "#F1F3F7" }}>

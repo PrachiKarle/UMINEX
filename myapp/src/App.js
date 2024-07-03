@@ -7,9 +7,7 @@ import SignUp from "./SignUp";
 import Forget from "./Forget";
 import Cart from "./Cart";
 import Shop from "./Shop";
-import Product from "./Product";
 import Blog from "./Blog";
-import Account from "./Account";
 import About from "./About";
 import Contact from "./Contact";
 import axios from "axios";
@@ -21,8 +19,8 @@ const App = () => {
   },[]);
 
   const loadAccount=async()=>{
-     var acc=await axios.get("http://localhost:3000/account");
-     for(let x of acc.data){
+     var acc=await axios.get("https://prachikarle.github.io/JSON-UMINEX/db.json");
+     for(let x of acc.data.account){
         if(x.Login){
           setAccount(x);
         }
@@ -35,11 +33,11 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Header />}>
             <Route index element={<Home/>} />
-            <Route path="/cart" element={<Cart />} />
+            {/* <Route path="/cart" element={<Cart />} /> */}
             <Route path="/shop" element={<Shop />} />
-            <Route path="/product" element={<Product />} />
+            {/* <Route path="/product" element={<Product />} /> */}
             <Route path="/blog" element={<Blog />} />
-            <Route path="/account" element={<Account account={account}/>}/>
+            {/* <Route path="/account" element={<Account account={account}/>}/> */}
             <Route path='/about' element={<About/>}/>
             <Route path='/contact' element={<Contact/>}/>
           </Route>
