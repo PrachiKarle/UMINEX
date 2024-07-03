@@ -1,2 +1,1 @@
-# UMINEX
-Online electronic product purchasing website
+Online electronic product purchasing website-UMINEX
