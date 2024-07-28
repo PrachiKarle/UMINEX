@@ -2,7 +2,6 @@ import React from "react";
 import Head from "./Head";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 
 const TopSeals = () => {
   const [seals, setSeal] = useState([]);
@@ -11,51 +10,30 @@ const TopSeals = () => {
   }, []);
 
   const loadData = async () => {
-    var res = await axios.get("https://prachikarle.github.io/JSON-UMINEX/db.json");
+    var res = await axios.get(
+      "https://prachikarle.github.io/JSON-UMINEX/db.json"
+    );
     setSeal(res.data.seals);
   };
 
-  const nav = useNavigate();
-
   //add to cart
   const add = async (id) => {
-    if (window.confirm("Are you sure?")) {
-      var flag = false;
-      var acc = await axios.get(`https://prachikarle.github.io/JSON-UMINEX/db.json`);
-      for (let x of acc.data.account) {
-        if (x.Login) {
-          flag = true;
-          var deals = await axios.get(`https://prachikarle.github.io/JSON-UMINEX/db.json`);
-          deals=deals.data.seals[id];
-          x.AddtoCart=[...x.AddtoCart,deals.data];
-          alert("Successfully added");
-          
-        }
-      }
-      if (!flag) {
-        nav("/signin");
-      }
-    }
+    var deals = await axios.get(
+      `https://prachikarle.github.io/JSON-UMINEX/db.json`
+    );
+    deals = deals.data.seals[id];
+    console.log(deals);
+    alert("Successfully added");
   };
 
   //buy
   const Buy = async (id) => {
-    if (window.confirm("Are you sure?")) {
-      var flag = false;
-      var acc = await axios.get("https://prachikarle.github.io/JSON-UMINEX/db.json");
-      for (let x of acc.data.account) {
-        if (x.Login) {
-          flag = true;
-          var deals = await axios.get(`https://prachikarle.github.io/JSON-UMINEX/db.json`);
-          deals=deals.data.seals[id];
-          x.BuyDetails=[...x.BuyDetails,deals.data];
-          alert("Successfully added");
-        }
-      }
-      if (!flag) {
-        nav("/signin");
-      }
-    }
+    var deals = await axios.get(
+      `https://prachikarle.github.io/JSON-UMINEX/db.json`
+    );
+    deals = deals.data.seals[id];
+    console.log(deals);
+    alert("Successfully added");
   };
 
   return (

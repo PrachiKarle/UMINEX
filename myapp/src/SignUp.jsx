@@ -15,8 +15,10 @@ const SignUp = () => {
   const [cpass, setCPass] = useState("");
   const [r,setR]=useState(null);
 
+
   const check1 = async () => {
     var res = await axios.get("https://prachikarle.github.io/JSON-UMINEX/db.json");
+
     for (let x of res.data.account) {
       if (x.mail == mail) {
         setMailerr("Email Already exist,Please sign in");
@@ -36,19 +38,23 @@ const SignUp = () => {
       if (cpass == pass) {
         if (reg.test(pass)) {
           alert("Account Created Successfully");
-          // var nm = mail[0].toUpperCase() + mail.slice(1, mail.indexOf("@"));
-          // await axios.post("https://prachikarle.github.io/JSON-UMINEX/db.json", {
-          //   mail: mail,
-          //   pass: pass,
-          //   name: nm,
-          //   Login:false,
-          //   AddtoCart:[],
-          //   total:0,
-          //   BuyDetail:[],
+          var nm = mail[0].toUpperCase() + mail.slice(1, mail.indexOf("@"));
+          const arr={
+            mail: mail,
+            pass: pass,
+            name: nm,
+            Login:false,
+            AddtoCart:[],
+            total:0,
+            BuyDetail:[],
+          }
+          // await axios.put("https://prachikarle.github.io/JSON-UMINEX/db.json", {
+          //   account : [...acc,arr]
           // });
+          console.log(arr);
           setMail("");
           setPass("");
-          nav("/signin");
+          nav("/");
         } else {
           setPasserr("Please Enter Strong Password");
         }

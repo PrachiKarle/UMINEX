@@ -3,47 +3,26 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const Card = (props) => {
-  const nav = useNavigate();
-
   //add to cart
   const add = async (id) => {
     if (window.confirm("Are you sure?")) {
-      var flag = false;
-      var acc = await axios.get(`https://prachikarle.github.io/JSON-UMINEX/db.json`);
-      for (let x of acc.data.account) {
-        if (x.Login) {
-          flag = true;
-          var deals = await axios.get(`https://prachikarle.github.io/JSON-UMINEX/db.json`);
-          deals=deals.data.deals[id];
-          x.AddtoCart=[...x.AddtoCart,deals.data];
-          alert("Successfully added");
-          
-        }
-      }
-      if (!flag) {
-        nav("/signin");
-      }
+      var deals = await axios.get(
+        `https://prachikarle.github.io/JSON-UMINEX/db.json`
+      );
+      deals = deals.data.deals[id];
+      console.log(deals);
+      alert("Successfully added");
     }
   };
 
   //buy
   const Buy = async (id) => {
-    if (window.confirm("Are you sure?")) {
-      var flag = false;
-      var acc = await axios.get("https://prachikarle.github.io/JSON-UMINEX/db.json");
-      for (let x of acc.data.account) {
-        if (x.Login) {
-          flag = true;
-          var deals = await axios.get(`https://prachikarle.github.io/JSON-UMINEX/db.json`);
-          deals=deals.data.deals[id];
-          x.BuyDetails=[...x.BuyDetails,deals.data];
-          alert("Successfully added");
-        }
-      }
-      if (!flag) {
-        nav("/signin");
-      }
-    }
+    var deals = await axios.get(
+      `https://prachikarle.github.io/JSON-UMINEX/db.json`
+    );
+    deals = deals.data.deals[id];
+    console.log(deals);
+    alert("Successfully added");
   };
 
   return (
