@@ -1,6 +1,5 @@
 import React from "react";
 import Heading from "./Heading";
-import axios from "axios";
 import "./App.css";
 
 class Contact extends React.Component {
@@ -14,10 +13,10 @@ class Contact extends React.Component {
     };
   }
   render() {
-    const sendMsg = async (e) => {
+    const sendMsg =  (e) => {
       e.preventDefault();
-      if (this.state.number.length == 10) {
-        await axios.post(`http://localhost:3000/Contact`, this.state);
+      if (parseInt(this.state.number.length) === 10) {
+        console.log(this.state);
         alert("Message send Successfully!!!");
         this.setState({
           name: "",

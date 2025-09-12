@@ -11,7 +11,7 @@ const TopSeals = () => {
 
   const loadData = async () => {
     var res = await axios.get(
-      "https://prachikarle.github.io/JSON-UMINEX/db.json"
+      "https://prachikarle.github.io/uminex_json/seals.json"
     );
     setSeal(res.data.seals);
   };
@@ -19,21 +19,21 @@ const TopSeals = () => {
   //add to cart
   const add = async (id) => {
     var deals = await axios.get(
-      `https://prachikarle.github.io/JSON-UMINEX/db.json`
+      `https://prachikarle.github.io/uminex_json/seals.json`
     );
     deals = deals.data.seals[id];
     console.log(deals);
-    alert("Successfully added");
+    alert("Item added to cart");
   };
 
   //buy
   const Buy = async (id) => {
     var deals = await axios.get(
-      `https://prachikarle.github.io/JSON-UMINEX/db.json`
+      `https://prachikarle.github.io/uminex_json/seals.json`
     );
     deals = deals.data.seals[id];
     console.log(deals);
-    alert("Successfully added");
+    alert("Successfully Buy");
   };
 
   return (
@@ -78,7 +78,7 @@ const TopSeals = () => {
                           Add to Cart
                         </button>
                         <button
-                          className="btn btn-danger"
+                          className="btn btn-danger mx-2"
                           onClick={() => Buy(val.id)}
                         >
                           Buy Now

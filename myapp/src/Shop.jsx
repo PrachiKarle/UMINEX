@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./App.css";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import Heading from "./Heading";
 
 const shop = [
@@ -30,19 +30,20 @@ const Shop = () => {
   }, []);
 
   const loadData = async () => {
-    var res = await axios.get("https://prachikarle.github.io/JSON-UMINEX/db.json");
+    var res = await axios.get(
+      "https://prachikarle.github.io/uminex_json/shop.json"
+    );
     setData(res.data.shop);
   };
 
-  
   return (
     <>
       <Heading val="Shop"></Heading>
       <div className="row m-0 px-4 py-0">
-        {shop.map((val) => {
+        {shop.map((val, i) => {
           return (
             <>
-              <div className="col-lg-3 col-md-6 col-12 p-3">
+              <div className="col-lg-3 col-md-6 col-12 p-3" key={i}>
                 <div style={{ borderRadius: "40px" }} id="div1">
                   <img src={val.img} className="img-fluid" alt="" />
                   <button className="btn btn_3">{val.des}</button>
@@ -54,10 +55,10 @@ const Shop = () => {
       </div>
 
       <div className="row m-0 px-4 py-3 bg-light">
-        {data.map((val) => {
+        {data.map((val, i) => {
           return (
             <>
-              <div className="col-lg-3 col-md-6 col-12 p-4">
+              <div className="col-lg-3 col-md-6 col-12 p-4" key={i}>
                 <div
                   className="h-100 w-100 py-3"
                   style={{ backgroundColor: "white" }}
@@ -78,8 +79,6 @@ const Shop = () => {
                     </div>
                     <b className="py-3">${val.price}</b>
                   </div>
-
-                 
                 </div>
               </div>
             </>

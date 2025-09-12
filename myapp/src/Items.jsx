@@ -10,7 +10,7 @@ const Items = () => {
   }, []);
 
   const loadData = async() => {
-    var res=await axios.get("https://prachikarle.github.io/JSON-UMINEX/db.json");
+    var res=await axios.get("https://prachikarle.github.io/uminex_json/items.json");
     setItem(res.data.item)
   };
 
@@ -20,7 +20,7 @@ const Items = () => {
         {item.map((val,ind) => {
           return (
             <>
-              <div 
+              <div key={ind}
                 className="col-lg-2 col-md-4 col-sm-6 col-8 m-sm-0 m-auto p-4 m-0"
               >
                 <div className="d-flex img2 justify-content-center p-3 w-100 bg-light align-items-center" style={{borderRadius:"50%",height:"70%"}} key={ind}>

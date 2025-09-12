@@ -27,10 +27,10 @@ const Card = (props) => {
 
   return (
     <>
-      <div className="card-header">
+      <div className="card-header" style={{height:"40vh"}}>
         <img src={props.img} className="img-fluid h-100" alt="" />
       </div>
-      <div className="p-2 card-body">
+      <div className="p-2 card-body" style={{height:"20vh"}}>
         <h6 className="fw-normal" style={{ color: "#ADADAD" }}>
           {props.nm}
         </h6>

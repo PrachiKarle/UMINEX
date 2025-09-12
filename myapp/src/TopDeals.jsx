@@ -10,7 +10,7 @@ const TopDeals = () => {
   },[]);
   
   const loadData=async()=>{
-    var res=await axios.get("https://prachikarle.github.io/JSON-UMINEX/db.json");
+    var res=await axios.get("https://prachikarle.github.io/uminex_json/deals.json");
     setDeals(res.data.deals);
   }
   return (
